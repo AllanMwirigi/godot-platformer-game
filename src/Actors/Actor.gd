@@ -4,8 +4,8 @@ class_name Actor # allows it to be inherited i.e. in other file - extends {class
 
 export var speed: = Vector2(800.0, 1000.0) # the max velocity
 #var velocity: = Vector2(300, 0) #move 300px/s on x-axis and 0px/s on y-axis
-var velocity: = Vector2.ZERO # initial velocity is zero
-export var gravity: = 3000.0	#export used to make value configurable from editor
+export var _velocity: = Vector2.ZERO # initial velocity is zero, underscore denotes private variable to only be modified in this class and children
+export var gravity: = 3000.0	# export used to make value configurable from editor
 # gravity defines the acceleration by which the actor falls in pixels/sec
 
 const FLOOR_NORMAL: = Vector2.UP # to define direction when jumping
