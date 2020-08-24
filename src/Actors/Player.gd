@@ -21,8 +21,13 @@ func getDirection() -> Vector2:
 	
 func calculateMoveVelocity(linearVelocity: Vector2, direction: Vector2, speed: Vector2, isJumpInterrupted: bool) -> Vector2:
 	var newVelocity: = linearVelocity
-	newVelocity.x = speed.x * direction.x
-	newVelocity.y += gravity * get_physics_process_delta_time()
+	# if key not pressed/both L/R pressed, direction.x is 0.0 thus newvelocity.x is 0.0; direction vector obtained from getDirection
+	# if key pressed hence direction.x has value, speed.x will be multiplied by a factor in the range of 0 to 1, in the right direction
+	newVelocity.x = speed.x * direction.x 
+	
+	# this makes player fall if above floor e.g. when jumping or at start of game
+	newVelocity.y += gravity * get_physics_process_delta_time() 
+	
 	if direction.y == -1.0:
 		newVelocity.y = speed.y * direction.y
 	if isJumpInterrupted:
