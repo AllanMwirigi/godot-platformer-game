@@ -2,7 +2,7 @@
 extends KinematicBody2D
 class_name Actor # allows it to be inherited i.e. in other file - extends {class_name}
 
-export var speed: = Vector2(500.0, 1000.0) # the max velocity
+export var speed: = Vector2(300.0, 1000.0) # the max velocity
 #var velocity: = Vector2(300, 0) #move 300px/s on x-axis and 0px/s on y-axis
 
 # initial velocity is zero, character will not move, underscore denotes private variable to only be modified in this class and children

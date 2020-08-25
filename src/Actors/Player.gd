@@ -1,5 +1,13 @@
 extends Actor
 
+export var stomp_impulse: = 800.0
+
+func _on_EnemyDetector_area_entered(area: Area2D) -> void:
+	_velocity = calculateStompVelocity(_velocity, stomp_impulse)
+
+func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
+	queue_free() # kill the player if collides with enemy
+
 # this and the parent's physics_process will be called
 func _physics_process(delta: float) -> void:
 	var isJumpInterrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
@@ -33,3 +41,9 @@ func calculateMoveVelocity(linearVelocity: Vector2, direction: Vector2, speed: V
 	if isJumpInterrupted:
 		newVelocity.y = 0.0 # if jump key is released mid jump, stop the jump i.e. jump smaller height on light press
 	return newVelocity
+	
+func calculateStompVelocity(linearVelocity: Vector2, impulse: float) -> Vector2:
+	var out: = linearVelocity
+	out.y = -impulse # replace y component with the defined value for the stomp effect i.e. player jumps a bit after stomping
+	return out
+
