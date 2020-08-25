@@ -44,6 +44,6 @@ func calculateMoveVelocity(linearVelocity: Vector2, direction: Vector2, speed: V
 	
 func calculateStompVelocity(linearVelocity: Vector2, impulse: float) -> Vector2:
 	var out: = linearVelocity
-	out.y = -impulse # replace y component with the defined value for the stomp effect i.e. player jumps a bit after stomping
+	out.y = -impulse # replace y component with the defined value for a bounce effect i.e. player jumps a bit after stomping
 	return out
 
